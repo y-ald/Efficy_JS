@@ -1,0 +1,10 @@
+.border {
+  border: 2px blue dashed;
+}
+
+.mt {
+  margin-top: 1.5%;
+}
+.d-block {
+  display: block;
+}

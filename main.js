@@ -27,32 +27,33 @@ const oppoStatus = [
 ];
 let selectTag = document.getElementById("status");
 let input = document.getElementById("success");
+let output = document.getElementById("output");
 
 const FormComponent = class {
   constructor() {}
   start() {
-    // Start modifying the form elements here!
-    // You are allowed to add extra methods, properties or change the constructor of this class
-
+    // start to add all option to select component
     oppoStatus.map((element) => {
       let opt = document.createElement("option");
       opt.value = element.K_OPPO_STATUS; // the index
       opt.innerHTML = element.STATUS;
       selectTag.append(opt);
-      input.value = element.SUCCESS;
     });
+    updateOutput();
   }
 };
 
+// Function to update input text + div text
 function updateOutput() {
-  let selected = selectTag.find("option:selected").val();
-  input.val(data[selected + 1]);
+  let selected = oppoStatus[selectTag.value - 1];
+
+  input.value = selected.SUCCESS;
+  output_data = {
+    status: selected.K_OPPO_STATUS,
+    sucess: selected.SUCCESS,
+  };
+  output.innerText = JSON.stringify(output_data);
 }
 
 const fc = new FormComponent();
 fc.start();
-selectTag.onchange(updateOutput);
-
-document
-  .querySelector(".changeSelected")
-  .addEventListener("click", changeSelected);
